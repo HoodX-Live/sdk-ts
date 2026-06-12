@@ -60,8 +60,11 @@ package does not exist yet:
 
 ```console
 npm login
-npm publish --access public
+npm publish --access public --provenance=false
 ```
+
+Local publishing cannot generate provenance because it does not run under a
+supported cloud CI identity provider.
 
 After the package exists, configure npm trusted publishing for:
 
