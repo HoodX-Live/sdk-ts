@@ -768,7 +768,7 @@ export type GetAccountAuthenticatorsData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators';
+    url: '/v1/account/authenticators';
 };
 
 export type GetAccountAuthenticatorsErrors = {
@@ -809,7 +809,7 @@ export type GetAccountAuthenticatorsRecoveryCodesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators/recovery-codes';
+    url: '/v1/account/authenticators/recovery-codes';
 };
 
 export type GetAccountAuthenticatorsRecoveryCodesErrors = {
@@ -853,7 +853,7 @@ export type PostAccountAuthenticatorsRecoveryCodesData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators/recovery-codes';
+    url: '/v1/account/authenticators/recovery-codes';
 };
 
 export type PostAccountAuthenticatorsRecoveryCodesErrors = {
@@ -881,7 +881,7 @@ export type DeleteAccountAuthenticatorsTotpData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators/totp';
+    url: '/v1/account/authenticators/totp';
 };
 
 export type DeleteAccountAuthenticatorsTotpErrors = {
@@ -917,7 +917,7 @@ export type GetAccountAuthenticatorsTotpData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators/totp';
+    url: '/v1/account/authenticators/totp';
 };
 
 export type GetAccountAuthenticatorsTotpErrors = {
@@ -979,7 +979,7 @@ export type PostAccountAuthenticatorsTotpData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/authenticators/totp';
+    url: '/v1/account/authenticators/totp';
 };
 
 export type PostAccountAuthenticatorsTotpErrors = {
@@ -1031,7 +1031,7 @@ export type DeleteAccountEmailData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/email';
+    url: '/v1/account/email';
 };
 
 export type DeleteAccountEmailErrors = {
@@ -1067,7 +1067,7 @@ export type GetAccountEmailData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/email';
+    url: '/v1/account/email';
 };
 
 export type GetAccountEmailErrors = {
@@ -1103,7 +1103,7 @@ export type PatchAccountEmailData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/email';
+    url: '/v1/account/email';
 };
 
 export type PatchAccountEmailErrors = {
@@ -1139,7 +1139,7 @@ export type PostAccountEmailData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/email';
+    url: '/v1/account/email';
 };
 
 export type PostAccountEmailErrors = {
@@ -1185,7 +1185,7 @@ export type PutAccountEmailData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/email';
+    url: '/v1/account/email';
 };
 
 export type PutAccountEmailErrors = {
@@ -1225,7 +1225,7 @@ export type PostAccountPasswordChangeData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/password/change';
+    url: '/v1/account/password/change';
 };
 
 export type PostAccountPasswordChangeErrors = {
@@ -1252,7 +1252,7 @@ export type GetAccountPhoneData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/phone';
+    url: '/v1/account/phone';
 };
 
 export type GetAccountPhoneErrors = {
@@ -1285,7 +1285,7 @@ export type PostAccountPhoneData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/phone';
+    url: '/v1/account/phone';
 };
 
 export type PostAccountPhoneErrors = {
@@ -1327,7 +1327,7 @@ export type DeleteAccountProvidersData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/providers';
+    url: '/v1/account/providers';
 };
 
 export type DeleteAccountProvidersErrors = {
@@ -1363,7 +1363,7 @@ export type GetAccountProvidersData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/account/providers';
+    url: '/v1/account/providers';
 };
 
 export type GetAccountProvidersResponses = {
@@ -1390,7 +1390,7 @@ export type PostAuth2FaAuthenticateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/2fa/authenticate';
+    url: '/v1/auth/2fa/authenticate';
 };
 
 export type PostAuth2FaAuthenticateErrors = {
@@ -1427,7 +1427,7 @@ export type PostAuth2FaReauthenticateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/2fa/reauthenticate';
+    url: '/v1/auth/2fa/reauthenticate';
 };
 
 export type PostAuth2FaReauthenticateErrors = {
@@ -1453,7 +1453,7 @@ export type PostAuthCodeConfirmData = {
     body: AllauthConfirmLoginCode2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/code/confirm';
+    url: '/v1/auth/code/confirm';
 };
 
 export type PostAuthCodeConfirmErrors = {
@@ -1495,7 +1495,7 @@ export type GetAuthEmailVerifyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/email/verify';
+    url: '/v1/auth/email/verify';
 };
 
 export type GetAuthEmailVerifyErrors = {
@@ -1533,7 +1533,7 @@ export type PostAuthEmailVerifyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/email/verify';
+    url: '/v1/auth/email/verify';
 };
 
 export type PostAuthEmailVerifyErrors = {
@@ -1576,7 +1576,7 @@ export type PostAuthEmailVerifyResendData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/email/verify/resend';
+    url: '/v1/auth/email/verify/resend';
 };
 
 export type PostAuthEmailVerifyResendErrors = {
@@ -1615,7 +1615,7 @@ export type PostAuthLoginData = {
     body: AllauthLogin2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/login';
+    url: '/v1/auth/login';
 };
 
 export type PostAuthLoginErrors = {
@@ -1654,7 +1654,7 @@ export type PostAuthPasswordRequestData = {
     body: AllauthRequestPassword2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/password/request';
+    url: '/v1/auth/password/request';
 };
 
 export type PostAuthPasswordRequestErrors = {
@@ -1693,7 +1693,7 @@ export type GetAuthPasswordResetData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/password/reset';
+    url: '/v1/auth/password/reset';
 };
 
 export type GetAuthPasswordResetErrors = {
@@ -1729,7 +1729,7 @@ export type PostAuthPasswordResetData = {
     body?: AllauthResetPassword2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/password/reset';
+    url: '/v1/auth/password/reset';
 };
 
 export type PostAuthPasswordResetErrors = {
@@ -1771,7 +1771,7 @@ export type PostAuthPhoneVerifyData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/phone/verify';
+    url: '/v1/auth/phone/verify';
 };
 
 export type PostAuthPhoneVerifyErrors = {
@@ -1814,7 +1814,7 @@ export type PostAuthPhoneVerifyResendData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/phone/verify/resend';
+    url: '/v1/auth/phone/verify/resend';
 };
 
 export type PostAuthPhoneVerifyResendErrors = {
@@ -1850,7 +1850,7 @@ export type GetAuthProviderSignupData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/provider/signup';
+    url: '/v1/auth/provider/signup';
 };
 
 export type GetAuthProviderSignupErrors = {
@@ -1887,7 +1887,7 @@ export type PostAuthProviderSignupData = {
     body: AllauthProviderSignup2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/provider/signup';
+    url: '/v1/auth/provider/signup';
 };
 
 export type PostAuthProviderSignupErrors = {
@@ -1933,7 +1933,7 @@ export type PostAuthProviderTokenData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/provider/token';
+    url: '/v1/auth/provider/token';
 };
 
 export type PostAuthProviderTokenErrors = {
@@ -1977,7 +1977,7 @@ export type PostAuthReauthenticateData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/reauthenticate';
+    url: '/v1/auth/reauthenticate';
 };
 
 export type PostAuthReauthenticateErrors = {
@@ -2010,7 +2010,7 @@ export type DeleteAuthSessionData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/session';
+    url: '/v1/auth/session';
 };
 
 export type DeleteAuthSessionErrors = {
@@ -2034,7 +2034,7 @@ export type GetAuthSessionData = {
     };
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/session';
+    url: '/v1/auth/session';
 };
 
 export type GetAuthSessionErrors = {
@@ -2067,7 +2067,7 @@ export type PostAuthSignupData = {
     body: AllauthSignup2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/auth/signup';
+    url: '/v1/auth/signup';
 };
 
 export type PostAuthSignupErrors = {
@@ -2109,7 +2109,7 @@ export type GetConfigData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/api/app/v1/config';
+    url: '/v1/config';
 };
 
 export type GetConfigResponses = {
@@ -2126,7 +2126,7 @@ export type PostTokensRefreshData = {
     body?: AllauthRefreshToken2;
     path?: never;
     query?: never;
-    url: '/api/app/v1/tokens/refresh';
+    url: '/v1/tokens/refresh';
 };
 
 export type PostTokensRefreshErrors = {

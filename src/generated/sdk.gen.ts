@@ -21,7 +21,7 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * List authenticators
  */
-export const getAccountAuthenticators = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsErrors, ThrowOnError>({ url: '/api/app/v1/account/authenticators', ...options });
+export const getAccountAuthenticators = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsErrors, ThrowOnError>({ url: '/v1/account/authenticators', ...options });
 
 /**
  * List recovery codes
@@ -29,12 +29,12 @@ export const getAccountAuthenticators = <ThrowOnError extends boolean = false>(o
  * List recovery codes.
  *
  */
-export const getAccountAuthenticatorsRecoveryCodes = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsRecoveryCodesData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError>({ url: '/api/app/v1/account/authenticators/recovery-codes', ...options });
+export const getAccountAuthenticatorsRecoveryCodes = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsRecoveryCodesData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError>({ url: '/v1/account/authenticators/recovery-codes', ...options });
 
 /**
  * Regenerate recovery codes
  */
-export const postAccountAuthenticatorsRecoveryCodes = <ThrowOnError extends boolean = false>(options?: Options<PostAccountAuthenticatorsRecoveryCodesData, ThrowOnError>): RequestResult<unknown, PostAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError> => (options?.client ?? client).post<unknown, PostAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError>({ url: '/api/app/v1/account/authenticators/recovery-codes', ...options });
+export const postAccountAuthenticatorsRecoveryCodes = <ThrowOnError extends boolean = false>(options?: Options<PostAccountAuthenticatorsRecoveryCodesData, ThrowOnError>): RequestResult<unknown, PostAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError> => (options?.client ?? client).post<unknown, PostAccountAuthenticatorsRecoveryCodesErrors, ThrowOnError>({ url: '/v1/account/authenticators/recovery-codes', ...options });
 
 /**
  * Deactivate TOTP
@@ -43,7 +43,7 @@ export const postAccountAuthenticatorsRecoveryCodes = <ThrowOnError extends bool
  * sufficiently recent, a reauthentication flow (`401`) will is presented.
  *
  */
-export const deleteAccountAuthenticatorsTotp = <ThrowOnError extends boolean = false>(options?: Options<DeleteAccountAuthenticatorsTotpData, ThrowOnError>): RequestResult<DeleteAccountAuthenticatorsTotpResponses, DeleteAccountAuthenticatorsTotpErrors, ThrowOnError> => (options?.client ?? client).delete<DeleteAccountAuthenticatorsTotpResponses, DeleteAccountAuthenticatorsTotpErrors, ThrowOnError>({ url: '/api/app/v1/account/authenticators/totp', ...options });
+export const deleteAccountAuthenticatorsTotp = <ThrowOnError extends boolean = false>(options?: Options<DeleteAccountAuthenticatorsTotpData, ThrowOnError>): RequestResult<DeleteAccountAuthenticatorsTotpResponses, DeleteAccountAuthenticatorsTotpErrors, ThrowOnError> => (options?.client ?? client).delete<DeleteAccountAuthenticatorsTotpResponses, DeleteAccountAuthenticatorsTotpErrors, ThrowOnError>({ url: '/v1/account/authenticators/totp', ...options });
 
 /**
  * TOTP authenticator status
@@ -51,7 +51,7 @@ export const deleteAccountAuthenticatorsTotp = <ThrowOnError extends boolean = f
  * Retrieve the information about the current TOTP authenticator, if any.
  *
  */
-export const getAccountAuthenticatorsTotp = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsTotpData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsTotpResponses, GetAccountAuthenticatorsTotpErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsTotpResponses, GetAccountAuthenticatorsTotpErrors, ThrowOnError>({ url: '/api/app/v1/account/authenticators/totp', ...options });
+export const getAccountAuthenticatorsTotp = <ThrowOnError extends boolean = false>(options?: Options<GetAccountAuthenticatorsTotpData, ThrowOnError>): RequestResult<GetAccountAuthenticatorsTotpResponses, GetAccountAuthenticatorsTotpErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountAuthenticatorsTotpResponses, GetAccountAuthenticatorsTotpErrors, ThrowOnError>({ url: '/v1/account/authenticators/totp', ...options });
 
 /**
  * Activate TOTP
@@ -62,7 +62,7 @@ export const getAccountAuthenticatorsTotp = <ThrowOnError extends boolean = fals
  *
  */
 export const postAccountAuthenticatorsTotp = <ThrowOnError extends boolean = false>(options?: Options<PostAccountAuthenticatorsTotpData, ThrowOnError>): RequestResult<PostAccountAuthenticatorsTotpResponses, PostAccountAuthenticatorsTotpErrors, ThrowOnError> => (options?.client ?? client).post<PostAccountAuthenticatorsTotpResponses, PostAccountAuthenticatorsTotpErrors, ThrowOnError>({
-    url: '/api/app/v1/account/authenticators/totp',
+    url: '/v1/account/authenticators/totp',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export const postAccountAuthenticatorsTotp = <ThrowOnError extends boolean = fal
  *
  */
 export const deleteAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<DeleteAccountEmailData, ThrowOnError>): RequestResult<DeleteAccountEmailResponses, DeleteAccountEmailErrors, ThrowOnError> => (options?.client ?? client).delete<DeleteAccountEmailResponses, DeleteAccountEmailErrors, ThrowOnError>({
-    url: '/api/app/v1/account/email',
+    url: '/v1/account/email',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ export const deleteAccountEmail = <ThrowOnError extends boolean = false>(options
  * Retrieves the list of email addresses of the account.
  *
  */
-export const getAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<GetAccountEmailData, ThrowOnError>): RequestResult<GetAccountEmailResponses, GetAccountEmailErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountEmailResponses, GetAccountEmailErrors, ThrowOnError>({ url: '/api/app/v1/account/email', ...options });
+export const getAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<GetAccountEmailData, ThrowOnError>): RequestResult<GetAccountEmailResponses, GetAccountEmailErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountEmailResponses, GetAccountEmailErrors, ThrowOnError>({ url: '/v1/account/email', ...options });
 
 /**
  * Change primary email address
@@ -101,7 +101,7 @@ export const getAccountEmail = <ThrowOnError extends boolean = false>(options?: 
  *
  */
 export const patchAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<PatchAccountEmailData, ThrowOnError>): RequestResult<PatchAccountEmailResponses, PatchAccountEmailErrors, ThrowOnError> => (options?.client ?? client).patch<PatchAccountEmailResponses, PatchAccountEmailErrors, ThrowOnError>({
-    url: '/api/app/v1/account/email',
+    url: '/v1/account/email',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ export const patchAccountEmail = <ThrowOnError extends boolean = false>(options?
  *
  */
 export const postAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<PostAccountEmailData, ThrowOnError>): RequestResult<PostAccountEmailResponses, PostAccountEmailErrors, ThrowOnError> => (options?.client ?? client).post<PostAccountEmailResponses, PostAccountEmailErrors, ThrowOnError>({
-    url: '/api/app/v1/account/email',
+    url: '/v1/account/email',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ export const postAccountEmail = <ThrowOnError extends boolean = false>(options?:
  *
  */
 export const putAccountEmail = <ThrowOnError extends boolean = false>(options?: Options<PutAccountEmailData, ThrowOnError>): RequestResult<PutAccountEmailResponses, PutAccountEmailErrors, ThrowOnError> => (options?.client ?? client).put<PutAccountEmailResponses, PutAccountEmailErrors, ThrowOnError>({
-    url: '/api/app/v1/account/email',
+    url: '/v1/account/email',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ export const putAccountEmail = <ThrowOnError extends boolean = false>(options?: 
  *
  */
 export const postAccountPasswordChange = <ThrowOnError extends boolean = false>(options?: Options<PostAccountPasswordChangeData, ThrowOnError>): RequestResult<unknown, PostAccountPasswordChangeErrors, ThrowOnError> => (options?.client ?? client).post<unknown, PostAccountPasswordChangeErrors, ThrowOnError>({
-    url: '/api/app/v1/account/password/change',
+    url: '/v1/account/password/change',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ export const postAccountPasswordChange = <ThrowOnError extends boolean = false>(
  * endpoint returns a list of phone numbers, at most one entry is returned.
  *
  */
-export const getAccountPhone = <ThrowOnError extends boolean = false>(options?: Options<GetAccountPhoneData, ThrowOnError>): RequestResult<GetAccountPhoneResponses, GetAccountPhoneErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountPhoneResponses, GetAccountPhoneErrors, ThrowOnError>({ url: '/api/app/v1/account/phone', ...options });
+export const getAccountPhone = <ThrowOnError extends boolean = false>(options?: Options<GetAccountPhoneData, ThrowOnError>): RequestResult<GetAccountPhoneResponses, GetAccountPhoneErrors, ThrowOnError> => (options?.client ?? client).get<GetAccountPhoneResponses, GetAccountPhoneErrors, ThrowOnError>({ url: '/v1/account/phone', ...options });
 
 /**
  * Change the phone number
@@ -192,7 +192,7 @@ export const getAccountPhone = <ThrowOnError extends boolean = false>(options?: 
  *
  */
 export const postAccountPhone = <ThrowOnError extends boolean = false>(options?: Options<PostAccountPhoneData, ThrowOnError>): RequestResult<PostAccountPhoneResponses, PostAccountPhoneErrors, ThrowOnError> => (options?.client ?? client).post<PostAccountPhoneResponses, PostAccountPhoneErrors, ThrowOnError>({
-    url: '/api/app/v1/account/phone',
+    url: '/v1/account/phone',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -211,7 +211,7 @@ export const postAccountPhone = <ThrowOnError extends boolean = false>(options?:
  *
  */
 export const deleteAccountProviders = <ThrowOnError extends boolean = false>(options?: Options<DeleteAccountProvidersData, ThrowOnError>): RequestResult<DeleteAccountProvidersResponses, DeleteAccountProvidersErrors, ThrowOnError> => (options?.client ?? client).delete<DeleteAccountProvidersResponses, DeleteAccountProvidersErrors, ThrowOnError>({
-    url: '/api/app/v1/account/providers',
+    url: '/v1/account/providers',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ export const deleteAccountProviders = <ThrowOnError extends boolean = false>(opt
 /**
  * List the connected third-party provider accounts
  */
-export const getAccountProviders = <ThrowOnError extends boolean = false>(options?: Options<GetAccountProvidersData, ThrowOnError>): RequestResult<GetAccountProvidersResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountProvidersResponses, unknown, ThrowOnError>({ url: '/api/app/v1/account/providers', ...options });
+export const getAccountProviders = <ThrowOnError extends boolean = false>(options?: Options<GetAccountProvidersData, ThrowOnError>): RequestResult<GetAccountProvidersResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAccountProvidersResponses, unknown, ThrowOnError>({ url: '/v1/account/providers', ...options });
 
 /**
  * Two-factor authentication
@@ -233,7 +233,7 @@ export const getAccountProviders = <ThrowOnError extends boolean = false>(option
  *
  */
 export const postAuth2FaAuthenticate = <ThrowOnError extends boolean = false>(options: Options<PostAuth2FaAuthenticateData, ThrowOnError>): RequestResult<PostAuth2FaAuthenticateResponses, PostAuth2FaAuthenticateErrors, ThrowOnError> => (options.client ?? client).post<PostAuth2FaAuthenticateResponses, PostAuth2FaAuthenticateErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/2fa/authenticate',
+    url: '/v1/auth/2fa/authenticate',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -254,7 +254,7 @@ export const postAuth2FaAuthenticate = <ThrowOnError extends boolean = false>(op
  *
  */
 export const postAuth2FaReauthenticate = <ThrowOnError extends boolean = false>(options: Options<PostAuth2FaReauthenticateData, ThrowOnError>): RequestResult<PostAuth2FaReauthenticateResponses, PostAuth2FaReauthenticateErrors, ThrowOnError> => (options.client ?? client).post<PostAuth2FaReauthenticateResponses, PostAuth2FaReauthenticateErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/2fa/reauthenticate',
+    url: '/v1/auth/2fa/reauthenticate',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -269,7 +269,7 @@ export const postAuth2FaReauthenticate = <ThrowOnError extends boolean = false>(
  *
  */
 export const postAuthCodeConfirm = <ThrowOnError extends boolean = false>(options: Options<PostAuthCodeConfirmData, ThrowOnError>): RequestResult<PostAuthCodeConfirmResponses, PostAuthCodeConfirmErrors, ThrowOnError> => (options.client ?? client).post<PostAuthCodeConfirmResponses, PostAuthCodeConfirmErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/code/confirm',
+    url: '/v1/auth/code/confirm',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ export const postAuthCodeConfirm = <ThrowOnError extends boolean = false>(option
  * the user by email.
  *
  */
-export const getAuthEmailVerify = <ThrowOnError extends boolean = false>(options: Options<GetAuthEmailVerifyData, ThrowOnError>): RequestResult<GetAuthEmailVerifyResponses, GetAuthEmailVerifyErrors, ThrowOnError> => (options.client ?? client).get<GetAuthEmailVerifyResponses, GetAuthEmailVerifyErrors, ThrowOnError>({ url: '/api/app/v1/auth/email/verify', ...options });
+export const getAuthEmailVerify = <ThrowOnError extends boolean = false>(options: Options<GetAuthEmailVerifyData, ThrowOnError>): RequestResult<GetAuthEmailVerifyResponses, GetAuthEmailVerifyErrors, ThrowOnError> => (options.client ?? client).get<GetAuthEmailVerifyResponses, GetAuthEmailVerifyErrors, ThrowOnError>({ url: '/v1/auth/email/verify', ...options });
 
 /**
  * Verify an email
@@ -302,7 +302,7 @@ export const getAuthEmailVerify = <ThrowOnError extends boolean = false>(options
  *
  */
 export const postAuthEmailVerify = <ThrowOnError extends boolean = false>(options?: Options<PostAuthEmailVerifyData, ThrowOnError>): RequestResult<PostAuthEmailVerifyResponses, PostAuthEmailVerifyErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthEmailVerifyResponses, PostAuthEmailVerifyErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/email/verify',
+    url: '/v1/auth/email/verify',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -317,7 +317,7 @@ export const postAuthEmailVerify = <ThrowOnError extends boolean = false>(option
  * Requires `ACCOUNT_EMAIL_VERIFICATION_SUPPORTS_RESEND = True`.
  *
  */
-export const postAuthEmailVerifyResend = <ThrowOnError extends boolean = false>(options?: Options<PostAuthEmailVerifyResendData, ThrowOnError>): RequestResult<PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResendErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResendErrors, ThrowOnError>({ url: '/api/app/v1/auth/email/verify/resend', ...options });
+export const postAuthEmailVerifyResend = <ThrowOnError extends boolean = false>(options?: Options<PostAuthEmailVerifyResendData, ThrowOnError>): RequestResult<PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResendErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResendErrors, ThrowOnError>({ url: '/v1/auth/email/verify/resend', ...options });
 
 /**
  * Login
@@ -326,7 +326,7 @@ export const postAuthEmailVerifyResend = <ThrowOnError extends boolean = false>(
  *
  */
 export const postAuthLogin = <ThrowOnError extends boolean = false>(options: Options<PostAuthLoginData, ThrowOnError>): RequestResult<PostAuthLoginResponses, PostAuthLoginErrors, ThrowOnError> => (options.client ?? client).post<PostAuthLoginResponses, PostAuthLoginErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/login',
+    url: '/v1/auth/login',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -351,7 +351,7 @@ export const postAuthLogin = <ThrowOnError extends boolean = false>(options: Opt
  *
  */
 export const postAuthPasswordRequest = <ThrowOnError extends boolean = false>(options: Options<PostAuthPasswordRequestData, ThrowOnError>): RequestResult<PostAuthPasswordRequestResponses, PostAuthPasswordRequestErrors, ThrowOnError> => (options.client ?? client).post<PostAuthPasswordRequestResponses, PostAuthPasswordRequestErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/password/request',
+    url: '/v1/auth/password/request',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -370,7 +370,7 @@ export const postAuthPasswordRequest = <ThrowOnError extends boolean = false>(op
  * `ACCOUNT_PASSWORD_RESET_BY_CODE_MAX_ATTEMPTS`).
  *
  */
-export const getAuthPasswordReset = <ThrowOnError extends boolean = false>(options: Options<GetAuthPasswordResetData, ThrowOnError>): RequestResult<GetAuthPasswordResetResponses, GetAuthPasswordResetErrors, ThrowOnError> => (options.client ?? client).get<GetAuthPasswordResetResponses, GetAuthPasswordResetErrors, ThrowOnError>({ url: '/api/app/v1/auth/password/reset', ...options });
+export const getAuthPasswordReset = <ThrowOnError extends boolean = false>(options: Options<GetAuthPasswordResetData, ThrowOnError>): RequestResult<GetAuthPasswordResetResponses, GetAuthPasswordResetErrors, ThrowOnError> => (options.client ?? client).get<GetAuthPasswordResetResponses, GetAuthPasswordResetErrors, ThrowOnError>({ url: '/v1/auth/password/reset', ...options });
 
 /**
  * Reset password
@@ -384,7 +384,7 @@ export const getAuthPasswordReset = <ThrowOnError extends boolean = false>(optio
  *
  */
 export const postAuthPasswordReset = <ThrowOnError extends boolean = false>(options?: Options<PostAuthPasswordResetData, ThrowOnError>): RequestResult<PostAuthPasswordResetResponses, PostAuthPasswordResetErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthPasswordResetResponses, PostAuthPasswordResetErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/password/reset',
+    url: '/v1/auth/password/reset',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -401,7 +401,7 @@ export const postAuthPasswordReset = <ThrowOnError extends boolean = false>(opti
  *
  */
 export const postAuthPhoneVerify = <ThrowOnError extends boolean = false>(options?: Options<PostAuthPhoneVerifyData, ThrowOnError>): RequestResult<PostAuthPhoneVerifyResponses, PostAuthPhoneVerifyErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthPhoneVerifyResponses, PostAuthPhoneVerifyErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/phone/verify',
+    url: '/v1/auth/phone/verify',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -416,7 +416,7 @@ export const postAuthPhoneVerify = <ThrowOnError extends boolean = false>(option
  * Requires `ACCOUNT_PHONE_VERIFICATION_SUPPORTS_RESEND = True`.
  *
  */
-export const postAuthPhoneVerifyResend = <ThrowOnError extends boolean = false>(options?: Options<PostAuthPhoneVerifyResendData, ThrowOnError>): RequestResult<PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResendErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResendErrors, ThrowOnError>({ url: '/api/app/v1/auth/phone/verify/resend', ...options });
+export const postAuthPhoneVerifyResend = <ThrowOnError extends boolean = false>(options?: Options<PostAuthPhoneVerifyResendData, ThrowOnError>): RequestResult<PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResendErrors, ThrowOnError> => (options?.client ?? client).post<PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResendErrors, ThrowOnError>({ url: '/v1/auth/phone/verify/resend', ...options });
 
 /**
  * Provider signup information
@@ -429,7 +429,7 @@ export const postAuthPhoneVerifyResend = <ThrowOnError extends boolean = false>(
  * can be retrieved via this endpoint.
  *
  */
-export const getAuthProviderSignup = <ThrowOnError extends boolean = false>(options?: Options<GetAuthProviderSignupData, ThrowOnError>): RequestResult<GetAuthProviderSignupResponses, GetAuthProviderSignupErrors, ThrowOnError> => (options?.client ?? client).get<GetAuthProviderSignupResponses, GetAuthProviderSignupErrors, ThrowOnError>({ url: '/api/app/v1/auth/provider/signup', ...options });
+export const getAuthProviderSignup = <ThrowOnError extends boolean = false>(options?: Options<GetAuthProviderSignupData, ThrowOnError>): RequestResult<GetAuthProviderSignupResponses, GetAuthProviderSignupErrors, ThrowOnError> => (options?.client ?? client).get<GetAuthProviderSignupResponses, GetAuthProviderSignupErrors, ThrowOnError>({ url: '/v1/auth/provider/signup', ...options });
 
 /**
  * Provider signup
@@ -441,7 +441,7 @@ export const getAuthProviderSignup = <ThrowOnError extends boolean = false>(opti
  *
  */
 export const postAuthProviderSignup = <ThrowOnError extends boolean = false>(options: Options<PostAuthProviderSignupData, ThrowOnError>): RequestResult<PostAuthProviderSignupResponses, PostAuthProviderSignupErrors, ThrowOnError> => (options.client ?? client).post<PostAuthProviderSignupResponses, PostAuthProviderSignupErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/provider/signup',
+    url: '/v1/auth/provider/signup',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -461,7 +461,7 @@ export const postAuthProviderSignup = <ThrowOnError extends boolean = false>(opt
  *
  */
 export const postAuthProviderToken = <ThrowOnError extends boolean = false>(options: Options<PostAuthProviderTokenData, ThrowOnError>): RequestResult<PostAuthProviderTokenResponses, PostAuthProviderTokenErrors, ThrowOnError> => (options.client ?? client).post<PostAuthProviderTokenResponses, PostAuthProviderTokenErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/provider/token',
+    url: '/v1/auth/provider/token',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -481,7 +481,7 @@ export const postAuthProviderToken = <ThrowOnError extends boolean = false>(opti
  *
  */
 export const postAuthReauthenticate = <ThrowOnError extends boolean = false>(options: Options<PostAuthReauthenticateData, ThrowOnError>): RequestResult<PostAuthReauthenticateResponses, PostAuthReauthenticateErrors, ThrowOnError> => (options.client ?? client).post<PostAuthReauthenticateResponses, PostAuthReauthenticateErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/reauthenticate',
+    url: '/v1/auth/reauthenticate',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -495,7 +495,7 @@ export const postAuthReauthenticate = <ThrowOnError extends boolean = false>(opt
  * Logs out the user from the current session.
  *
  */
-export const deleteAuthSession = <ThrowOnError extends boolean = false>(options?: Options<DeleteAuthSessionData, ThrowOnError>): RequestResult<unknown, DeleteAuthSessionErrors, ThrowOnError> => (options?.client ?? client).delete<unknown, DeleteAuthSessionErrors, ThrowOnError>({ url: '/api/app/v1/auth/session', ...options });
+export const deleteAuthSession = <ThrowOnError extends boolean = false>(options?: Options<DeleteAuthSessionData, ThrowOnError>): RequestResult<unknown, DeleteAuthSessionErrors, ThrowOnError> => (options?.client ?? client).delete<unknown, DeleteAuthSessionErrors, ThrowOnError>({ url: '/v1/auth/session', ...options });
 
 /**
  * Get authentication status
@@ -505,7 +505,7 @@ export const deleteAuthSession = <ThrowOnError extends boolean = false>(options?
  * session.
  *
  */
-export const getAuthSession = <ThrowOnError extends boolean = false>(options?: Options<GetAuthSessionData, ThrowOnError>): RequestResult<GetAuthSessionResponses, GetAuthSessionErrors, ThrowOnError> => (options?.client ?? client).get<GetAuthSessionResponses, GetAuthSessionErrors, ThrowOnError>({ url: '/api/app/v1/auth/session', ...options });
+export const getAuthSession = <ThrowOnError extends boolean = false>(options?: Options<GetAuthSessionData, ThrowOnError>): RequestResult<GetAuthSessionResponses, GetAuthSessionErrors, ThrowOnError> => (options?.client ?? client).get<GetAuthSessionResponses, GetAuthSessionErrors, ThrowOnError>({ url: '/v1/auth/session', ...options });
 
 /**
  * Signup
@@ -517,7 +517,7 @@ export const getAuthSession = <ThrowOnError extends boolean = false>(options?: O
  *
  */
 export const postAuthSignup = <ThrowOnError extends boolean = false>(options: Options<PostAuthSignupData, ThrowOnError>): RequestResult<PostAuthSignupResponses, PostAuthSignupErrors, ThrowOnError> => (options.client ?? client).post<PostAuthSignupResponses, PostAuthSignupErrors, ThrowOnError>({
-    url: '/api/app/v1/auth/signup',
+    url: '/v1/auth/signup',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -536,7 +536,7 @@ export const postAuthSignup = <ThrowOnError extends boolean = false>(options: Op
  * time of your application.
  *
  */
-export const getConfig = <ThrowOnError extends boolean = false>(options?: Options<GetConfigData, ThrowOnError>): RequestResult<GetConfigResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetConfigResponses, unknown, ThrowOnError>({ url: '/api/app/v1/config', ...options });
+export const getConfig = <ThrowOnError extends boolean = false>(options?: Options<GetConfigData, ThrowOnError>): RequestResult<GetConfigResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetConfigResponses, unknown, ThrowOnError>({ url: '/v1/config', ...options });
 
 /**
  * Refresh the access token
@@ -547,7 +547,7 @@ export const getConfig = <ThrowOnError extends boolean = false>(options?: Option
  *
  */
 export const postTokensRefresh = <ThrowOnError extends boolean = false>(options?: Options<PostTokensRefreshData, ThrowOnError>): RequestResult<PostTokensRefreshResponses, PostTokensRefreshErrors, ThrowOnError> => (options?.client ?? client).post<PostTokensRefreshResponses, PostTokensRefreshErrors, ThrowOnError>({
-    url: '/api/app/v1/tokens/refresh',
+    url: '/v1/tokens/refresh',
     ...options,
     headers: {
         'Content-Type': 'application/json',

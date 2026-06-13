@@ -3106,7 +3106,7 @@
   },
   "openapi": "3.0.3",
   "paths": {
-    "/api/app/v1/account/authenticators": {
+    "/v1/account/authenticators": {
       "get": {
         "operationId": "getAccountAuthenticators",
         "parameters": [
@@ -3131,7 +3131,7 @@
         ]
       }
     },
-    "/api/app/v1/account/authenticators/recovery-codes": {
+    "/v1/account/authenticators/recovery-codes": {
       "get": {
         "description": "List recovery codes.\n",
         "operationId": "getAccountAuthenticatorsRecoveryCodes",
@@ -3189,7 +3189,7 @@
         ]
       }
     },
-    "/api/app/v1/account/authenticators/totp": {
+    "/v1/account/authenticators/totp": {
       "delete": {
         "description": "Deactivates TOTP authentication. If the user authentication is not\nsufficiently recent, a reauthentication flow (`401`) will is presented.\n",
         "operationId": "deleteAccountAuthenticatorsTotp",
@@ -3278,7 +3278,7 @@
         ]
       }
     },
-    "/api/app/v1/account/email": {
+    "/v1/account/email": {
       "delete": {
         "description": "Used to remove an email address.\n",
         "operationId": "deleteAccountEmail",
@@ -3468,7 +3468,7 @@
         ]
       }
     },
-    "/api/app/v1/account/password/change": {
+    "/v1/account/password/change": {
       "post": {
         "description": "In order to change the password of an account, the current and new\npassword must be provider.  However, accounts that were created by\nsigning up using a third-party provider do not have a password set. In\nthat case, the current password is not required.\n",
         "operationId": "postAccountPasswordChange",
@@ -3494,7 +3494,7 @@
         ]
       }
     },
-    "/api/app/v1/account/phone": {
+    "/v1/account/phone": {
       "get": {
         "description": "Retrieves the phone number of the account, if any. Note that while the\nendpoint returns a list of phone numbers, at most one entry is returned.\n",
         "operationId": "getAccountPhone",
@@ -3568,7 +3568,7 @@
         ]
       }
     },
-    "/api/app/v1/account/providers": {
+    "/v1/account/providers": {
       "delete": {
         "description": "Disconnect a third-party provider account, returning the remaining\naccounts that are still connected. The disconnect is not allowed if it\nwould leave the account unusable. For example, if no password was\nset up yet.\n",
         "operationId": "deleteAccountProviders",
@@ -3626,7 +3626,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/2fa/authenticate": {
+    "/v1/auth/2fa/authenticate": {
       "post": {
         "description": "If, during authentication,  a response with status 401 is encountered where one of the pending\nflows has ID `mfa_authenticate`, that indicates that the Two-Factor Authentication stage needs to\nbe completed.\n",
         "operationId": "postAuth2faAuthenticate",
@@ -3667,7 +3667,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/2fa/reauthenticate": {
+    "/v1/auth/2fa/reauthenticate": {
       "post": {
         "description": "In order to safeguard the account, some actions require the user to be\nrecently authenticated.  If you try to perform such an action without\nhaving been recently authenticated, a `401` status is returned, listing\nflows that can be performed to reauthenticate. One such flow is the flow\nwith ID `mfa_reauthenticate`, which allows for the user to input an\nauthenticator code (e.g. TOTP or recovery code). This is the endpoint\nrelated towards that flow.\n",
         "operationId": "postAuth2faReauthenticate",
@@ -3705,7 +3705,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/code/confirm": {
+    "/v1/auth/code/confirm": {
       "post": {
         "description": "Use this endpoint to pass along the received \"special\" login code.\n",
         "operationId": "postAuthCodeConfirm",
@@ -3763,7 +3763,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/email/verify": {
+    "/v1/auth/email/verify": {
       "get": {
         "description": "Obtain email verification information, given the token that was sent to\nthe user by email.\n",
         "operationId": "getAuthEmailVerify",
@@ -3857,7 +3857,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/email/verify/resend": {
+    "/v1/auth/email/verify/resend": {
       "post": {
         "description": "Requests a new email verification code.\nRequires `ACCOUNT_EMAIL_VERIFICATION_SUPPORTS_RESEND = True`.\n",
         "operationId": "postAuthEmailVerifyResend",
@@ -3890,7 +3890,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/login": {
+    "/v1/auth/login": {
       "post": {
         "description": "Login using a username-password or email-password combination.\n",
         "operationId": "postAuthLogin",
@@ -3954,7 +3954,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/password/request": {
+    "/v1/auth/password/request": {
       "post": {
         "description": "Initiates the password reset procedure. Depending on whether or not\n`ACCOUNT_PASSWORD_RESET_BY_CODE_ENABLED` is `True`, the procedure is\neither stateless or stateful.\n\nIn case codes are used, it is stateful, and a new\n`password_reset_by_code` flow is started. In this case, on a successful\npassword reset request, you will receive a 401 indicating the pending\nstatus of this flow.\n\nIn case password reset is configured to use (stateless) links, you will\nreceive a 200 on a successful password reset request.\n",
         "operationId": "postAuthPasswordRequest",
@@ -3990,7 +3990,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/password/reset": {
+    "/v1/auth/password/reset": {
       "get": {
         "description": "Used to obtain information on and validate a password reset key.  The\nkey passed is either the key encoded in the password reset URL that the\nuser has received per email, or, the password reset code in case of\n`ACCOUNT_PASSWORD_RESET_BY_CODE_ENABLED`. Note that in case of a code,\nthe number of requests you can make is limited (by\n`ACCOUNT_PASSWORD_RESET_BY_CODE_MAX_ATTEMPTS`).\n",
         "operationId": "getAuthPasswordReset",
@@ -4079,7 +4079,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/phone/verify": {
+    "/v1/auth/phone/verify": {
       "post": {
         "description": "Complete the phone number verification process. Note that a status code\nof 401 does not imply failure. It merely indicates that the phone number\nverification was successful, yet, the user is still not signed in.\n",
         "operationId": "postAuthPhoneVerify",
@@ -4125,7 +4125,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/phone/verify/resend": {
+    "/v1/auth/phone/verify/resend": {
       "post": {
         "description": "Requests a new phone number verification code.\nRequires `ACCOUNT_PHONE_VERIFICATION_SUPPORTS_RESEND = True`.\n",
         "operationId": "postAuthPhoneVerifyResend",
@@ -4158,7 +4158,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/provider/signup": {
+    "/v1/auth/provider/signup": {
       "get": {
         "description": "If, while signing up using a third-party provider account, there is\ninsufficient information received from the provider to automatically\ncomplete the signup process, an additional step is needed to complete\nthe missing data before the user is fully signed up and authenticated.\nThe information available so far, such as the pending provider account,\ncan be retrieved via this endpoint.\n",
         "operationId": "getAuthProviderSignup",
@@ -4249,7 +4249,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/provider/token": {
+    "/v1/auth/provider/token": {
       "post": {
         "description": "Authenticates with a third-party provider using provider tokens received\nby other means. For example, in case of a mobile app, the authentication\nflow runs completely on the device itself, without any interaction with\nthe API. Then, when the (device) authentication completes and the mobile\napp receives an access and/or ID token, it can hand over these tokens\nvia this endpoint to authenticate on the server.\n",
         "operationId": "postAuthProviderToken",
@@ -4315,7 +4315,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/reauthenticate": {
+    "/v1/auth/reauthenticate": {
       "post": {
         "description": "In order to safeguard the account, some actions require the user to be\nrecently authenticated.  If you try to perform such an action without\nhaving been recently authenticated, a `401` status is returned, listing\nflows that can be performed to reauthenticate. One such flow is the flow\nwith ID `reauthenticate`, which allows for the user to input the\npassword. This is the endpoint related towards that flow.\n",
         "operationId": "postAuthReauthenticate",
@@ -4353,7 +4353,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/session": {
+    "/v1/auth/session": {
       "delete": {
         "description": "Logs out the user from the current session.\n",
         "operationId": "deleteAuthSession",
@@ -4397,7 +4397,7 @@
         ]
       }
     },
-    "/api/app/v1/auth/signup": {
+    "/v1/auth/signup": {
       "post": {
         "description": "Whether or not `username`, `email`, `phone` or combination of those are\nrequired depends on the configuration of django-allauth. Additionally,\nif a custom signup form is used there may be other custom properties\nrequired.\n",
         "operationId": "postAuthSignup",
@@ -4465,7 +4465,7 @@
         ]
       }
     },
-    "/api/app/v1/config": {
+    "/v1/config": {
       "get": {
         "description": "There are many configuration options that alter the functionality\nand behavior of django-allauth, some of which can also impact the\nfrontend. Therefore, relevant configuration options are exposed via\nthis endpoint. The data returned is not user/authentication\ndependent. Hence, it suffices to only fetch this data once at boot\ntime of your application.\n",
         "operationId": "getConfig",
@@ -4480,7 +4480,7 @@
         ]
       }
     },
-    "/api/app/v1/tokens/refresh": {
+    "/v1/tokens/refresh": {
       "post": {
         "description": "Used to retrieve a new access token. Depending on `settings.HEADLESS_JWT_ROTATE_REFRESH_TOKEN`,\na new refresh token is returned as well.\n",
         "operationId": "postTokensRefresh",

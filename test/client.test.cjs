@@ -84,15 +84,17 @@ test('clears an invalid stored session', async () => {
   });
 
   client.setConfig({
-    fetch: async () =>
-      Response.json(
+    fetch: async (request) => {
+      assert.equal(request.url, 'https://api.hoodx.test/v1/auth/session');
+      return Response.json(
         {
           data: { flows: [{ id: 'login' }] },
           meta: { is_authenticated: false },
           status: 410,
         },
         { status: 410 },
-      ),
+      );
+    },
   });
 
   await getAuthSession({ client });

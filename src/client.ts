@@ -2,7 +2,7 @@ import { createClient } from './generated/client';
 import type { Client } from './generated/client';
 
 const SESSION_HEADER = 'X-Session-Token';
-const SESSION_PATH = '/api/app/v1/auth/session';
+const SESSION_PATH = '/v1/auth/session';
 
 export interface SessionTokenStore {
   delete(): Promise<void>;
