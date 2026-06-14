@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     tags:
-      - 'sdk-v*'
+      - '^v*'
 
 permissions:
   contents: read
