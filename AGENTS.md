@@ -63,7 +63,9 @@ If you change this behavior, update tests first.
 
 - CI runs on pushes and pull requests.
 - Publishing is tag-driven through `.github/workflows/publish.yml`.
-- The tag must match the package version: `sdk-vX.Y.Z`.
+- Use `pnpm version <patch|minor|major>` to update `package.json`, create the
+  release commit, and tag it as `vX.Y.Z`.
+- Push the release commit and tag with `git push --follow-tags`.
 - Local first publish uses:
 
 ```console

@@ -75,13 +75,21 @@ After the package exists, configure npm trusted publishing for:
 
 Subsequent releases use GitHub Actions:
 
-1. Update `version` in `package.json`.
-2. Commit the regenerated SDK and lockfile.
-3. Push a tag matching the package version:
+1. Commit any SDK changes and ensure the working tree is clean.
+2. Bump the package version. This updates `package.json`, creates a release
+   commit, and tags it as `vX.Y.Z`:
 
 ```console
-git tag sdk-v0.1.0
-git push origin sdk-v0.1.0
+pnpm version patch
+```
+
+Use `minor`, `major`, or an explicit version instead of `patch` when
+appropriate.
+
+3. Push the release commit and tag:
+
+```console
+git push --follow-tags
 ```
 
 The release workflow verifies the version, builds and tests the package, and
