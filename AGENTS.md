@@ -61,8 +61,9 @@ If you change this behavior, update tests first.
 
 ## Release model
 
-- CI runs on pushes and pull requests.
+- CI runs on pushes to `main`, pull requests, and version tags.
 - Publishing is tag-driven through `.github/workflows/publish.yml`.
+- The publish job depends on the CI check for the same tagged commit.
 - Use `pnpm version <patch|minor|major>` to update `package.json`, create the
   release commit, and tag it as `vX.Y.Z`.
 - Push the release commit and tag with `git push --follow-tags`.

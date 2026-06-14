@@ -92,5 +92,6 @@ appropriate.
 git push --follow-tags
 ```
 
-The release workflow verifies the version, builds and tests the package, and
-publishes it to npm with provenance.
+The workflow runs the full CI check for the tagged commit first. Only after CI
+succeeds does it verify the tag version and publish the package to npm with
+provenance.
