@@ -3092,6 +3092,453 @@
           "request_options"
         ],
         "type": "object"
+      },
+      "AuthorizationTypeEnum": {
+        "description": "* `resident` - resident\n* `invitation` - invitation",
+        "enum": [
+          "resident",
+          "invitation"
+        ],
+        "type": "string"
+      },
+      "CompactAppQrContract": {
+        "properties": {
+          "format": {
+            "type": "string"
+          },
+          "max_ttl_seconds": {
+            "type": "integer"
+          },
+          "method": {
+            "type": "string"
+          },
+          "signature_alg": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "format",
+          "max_ttl_seconds",
+          "method",
+          "signature_alg",
+          "version"
+        ],
+        "type": "object"
+      },
+      "DecisionEnum": {
+        "description": "* `granted` - granted\n* `denied` - denied\n* `unknown` - unknown",
+        "enum": [
+          "granted",
+          "denied",
+          "unknown"
+        ],
+        "type": "string"
+      },
+      "OfflineCredentialBundle": {
+        "properties": {
+          "app_qr": {
+            "$ref": "#/components/schemas/CompactAppQrContract"
+          },
+          "compact_credential_id": {
+            "type": "string"
+          },
+          "compact_device_id": {
+            "type": "string"
+          },
+          "credential_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "credential_version": {
+            "type": "integer"
+          },
+          "device_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "issued_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "signed_identity_claim": {
+            "type": "string"
+          },
+          "signing_key_id": {
+            "type": "string"
+          },
+          "supported_presentation_methods": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "app_qr",
+          "compact_credential_id",
+          "compact_device_id",
+          "credential_id",
+          "credential_version",
+          "device_id",
+          "display_name",
+          "expires_at",
+          "issued_at",
+          "issuer",
+          "signed_identity_claim",
+          "signing_key_id",
+          "supported_presentation_methods"
+        ],
+        "type": "object"
+      },
+      "OfflineCredentialProvision": {
+        "properties": {
+          "attestation": {},
+          "device_public_key_jwk": {}
+        },
+        "required": [
+          "device_public_key_jwk"
+        ],
+        "type": "object"
+      },
+      "PresentationMethodEnum": {
+        "description": "* `app_qr` - app_qr\n* `wallet_qr` - wallet_qr\n* `wallet_nfc` - wallet_nfc",
+        "enum": [
+          "app_qr",
+          "wallet_qr",
+          "wallet_nfc"
+        ],
+        "type": "string"
+      },
+      "ReaderAuthorization": {
+        "properties": {
+          "authorization_type": {
+            "$ref": "#/components/schemas/AuthorizationTypeEnum"
+          },
+          "credential_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "valid_from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "valid_until": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "authorization_type",
+          "credential_id",
+          "display_name",
+          "valid_from",
+          "valid_until"
+        ],
+        "type": "object"
+      },
+      "ReaderCredential": {
+        "properties": {
+          "compact_credential_id": {
+            "type": "string"
+          },
+          "credential_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "device_bindings": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderDeviceBinding"
+            },
+            "type": "array"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "compact_credential_id",
+          "credential_id",
+          "device_bindings",
+          "expires_at",
+          "status",
+          "version"
+        ],
+        "type": "object"
+      },
+      "ReaderDecision": {
+        "properties": {
+          "correlation_id": {
+            "type": "string"
+          },
+          "credential_digest": {
+            "type": "string"
+          },
+          "credential_id": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/DecisionEnum"
+          },
+          "local_decided_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "offline": {
+            "default": true,
+            "type": "boolean"
+          },
+          "presentation_method": {
+            "$ref": "#/components/schemas/PresentationMethodEnum"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/ReasonEnum"
+          },
+          "snapshot_version": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "decision",
+          "local_decided_at",
+          "presentation_method",
+          "reason",
+          "snapshot_version"
+        ],
+        "type": "object"
+      },
+      "ReaderDecisionReceipt": {
+        "properties": {
+          "accepted": {
+            "type": "integer"
+          },
+          "received_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "accepted",
+          "received_at"
+        ],
+        "type": "object"
+      },
+      "ReaderDecisionUpload": {
+        "properties": {
+          "decisions": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderDecision"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "decisions"
+        ],
+        "type": "object"
+      },
+      "ReaderDeviceBinding": {
+        "properties": {
+          "compact_device_id": {
+            "type": "string"
+          },
+          "device_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "public_key_jwk": {},
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "compact_device_id",
+          "device_id",
+          "public_key_jwk",
+          "status"
+        ],
+        "type": "object"
+      },
+      "ReaderKeys": {
+        "properties": {
+          "keys": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderSigningKey"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "keys"
+        ],
+        "type": "object"
+      },
+      "ReaderRevocation": {
+        "properties": {
+          "credential_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "credential_id",
+          "revoked_at"
+        ],
+        "type": "object"
+      },
+      "ReaderSigningKey": {
+        "properties": {
+          "key_id": {
+            "type": "string"
+          },
+          "not_after": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "not_before": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "public_key_jwk": {}
+        },
+        "required": [
+          "key_id",
+          "not_after",
+          "not_before",
+          "public_key_jwk"
+        ],
+        "type": "object"
+      },
+      "ReaderSnapshot": {
+        "properties": {
+          "authorizations": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderAuthorization"
+            },
+            "type": "array"
+          },
+          "credentials": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderCredential"
+            },
+            "type": "array"
+          },
+          "generated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "max_offline_age_seconds": {
+            "type": "integer"
+          },
+          "neighborhood_id": {
+            "type": "integer"
+          },
+          "reader_id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "revocations": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderRevocation"
+            },
+            "type": "array"
+          },
+          "signing_keys": {
+            "items": {
+              "$ref": "#/components/schemas/ReaderSigningKey"
+            },
+            "type": "array"
+          },
+          "snapshot_version": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "authorizations",
+          "credentials",
+          "generated_at",
+          "max_offline_age_seconds",
+          "neighborhood_id",
+          "reader_id",
+          "revocations",
+          "signing_keys",
+          "snapshot_version"
+        ],
+        "type": "object"
+      },
+      "ReasonEnum": {
+        "description": "* `resident` - resident\n* `invitation` - invitation\n* `no_access` - no_access\n* `expired` - expired\n* `revoked` - revoked\n* `replayed` - replayed\n* `malformed` - malformed\n* `stale_snapshot` - stale_snapshot\n* `reader_disabled` - reader_disabled\n* `local_failure` - local_failure",
+        "enum": [
+          "resident",
+          "invitation",
+          "no_access",
+          "expired",
+          "revoked",
+          "replayed",
+          "malformed",
+          "stale_snapshot",
+          "reader_disabled",
+          "local_failure"
+        ],
+        "type": "string"
+      },
+      "WalletUnsupportedResponse": {
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "status"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "readerBearer": {
+        "description": "Reader secret bearer token plus X-HoodX-Reader-Id header.",
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "xSessionToken": {
+        "in": "header",
+        "name": "X-Session-Token",
+        "type": "apiKey"
       }
     }
   },
@@ -4477,6 +4924,260 @@
         "summary": "Get configuration",
         "tags": [
           "Configuration"
+        ]
+      }
+    },
+    "/v1/digital-id/offline-credential": {
+      "delete": {
+        "operationId": "digital_id_offline_credential_destroy",
+        "responses": {
+          "204": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "digital-id"
+        ]
+      },
+      "get": {
+        "operationId": "digital_id_offline_credential_retrieve",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OfflineCredentialBundle"
+                }
+              }
+            },
+            "description": ""
+          },
+          "404": {
+            "description": "No response body"
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "digital-id"
+        ]
+      },
+      "post": {
+        "operationId": "digital_id_offline_credential_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OfflineCredentialProvision"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/OfflineCredentialProvision"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/OfflineCredentialProvision"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OfflineCredentialBundle"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "digital-id"
+        ]
+      }
+    },
+    "/v1/digital-id/wallet/apple": {
+      "post": {
+        "operationId": "digital_id_wallet_apple_create",
+        "responses": {
+          "501": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletUnsupportedResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "digital-id"
+        ]
+      }
+    },
+    "/v1/digital-id/wallet/google": {
+      "post": {
+        "operationId": "digital_id_wallet_google_create",
+        "responses": {
+          "501": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletUnsupportedResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "digital-id"
+        ]
+      }
+    },
+    "/v1/readers/keys": {
+      "get": {
+        "operationId": "readers_keys_retrieve",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReaderKeys"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "readerBearer": []
+          }
+        ],
+        "tags": [
+          "readers"
+        ]
+      }
+    },
+    "/v1/readers/{reader_id}/decisions": {
+      "post": {
+        "operationId": "readers_decisions_create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "reader_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReaderDecisionUpload"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ReaderDecisionUpload"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ReaderDecisionUpload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReaderDecisionReceipt"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "readerBearer": []
+          }
+        ],
+        "tags": [
+          "readers"
+        ]
+      }
+    },
+    "/v1/readers/{reader_id}/sync": {
+      "get": {
+        "operationId": "readers_sync_retrieve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "reader_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReaderSnapshot"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "readerBearer": []
+          }
+        ],
+        "tags": [
+          "readers"
         ]
       }
     },

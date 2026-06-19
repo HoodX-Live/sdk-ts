@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client/index.js';
-import type { DeleteAccountAuthenticatorsTotpData, DeleteAccountAuthenticatorsTotpErrors, DeleteAccountAuthenticatorsTotpResponses, DeleteAccountEmailData, DeleteAccountEmailErrors, DeleteAccountEmailResponses, DeleteAccountProvidersData, DeleteAccountProvidersErrors, DeleteAccountProvidersResponses, DeleteAuthSessionData, DeleteAuthSessionErrors, GetAccountAuthenticatorsData, GetAccountAuthenticatorsErrors, GetAccountAuthenticatorsRecoveryCodesData, GetAccountAuthenticatorsRecoveryCodesErrors, GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsTotpData, GetAccountAuthenticatorsTotpErrors, GetAccountAuthenticatorsTotpResponses, GetAccountEmailData, GetAccountEmailErrors, GetAccountEmailResponses, GetAccountPhoneData, GetAccountPhoneErrors, GetAccountPhoneResponses, GetAccountProvidersData, GetAccountProvidersResponses, GetAuthEmailVerifyData, GetAuthEmailVerifyErrors, GetAuthEmailVerifyResponses, GetAuthPasswordResetData, GetAuthPasswordResetErrors, GetAuthPasswordResetResponses, GetAuthProviderSignupData, GetAuthProviderSignupErrors, GetAuthProviderSignupResponses, GetAuthSessionData, GetAuthSessionErrors, GetAuthSessionResponses, GetConfigData, GetConfigResponses, PatchAccountEmailData, PatchAccountEmailErrors, PatchAccountEmailResponses, PostAccountAuthenticatorsRecoveryCodesData, PostAccountAuthenticatorsRecoveryCodesErrors, PostAccountAuthenticatorsTotpData, PostAccountAuthenticatorsTotpErrors, PostAccountAuthenticatorsTotpResponses, PostAccountEmailData, PostAccountEmailErrors, PostAccountEmailResponses, PostAccountPasswordChangeData, PostAccountPasswordChangeErrors, PostAccountPhoneData, PostAccountPhoneErrors, PostAccountPhoneResponses, PostAuth2FaAuthenticateData, PostAuth2FaAuthenticateErrors, PostAuth2FaAuthenticateResponses, PostAuth2FaReauthenticateData, PostAuth2FaReauthenticateErrors, PostAuth2FaReauthenticateResponses, PostAuthCodeConfirmData, PostAuthCodeConfirmErrors, PostAuthCodeConfirmResponses, PostAuthEmailVerifyData, PostAuthEmailVerifyErrors, PostAuthEmailVerifyResendData, PostAuthEmailVerifyResendErrors, PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResponses, PostAuthLoginData, PostAuthLoginErrors, PostAuthLoginResponses, PostAuthPasswordRequestData, PostAuthPasswordRequestErrors, PostAuthPasswordRequestResponses, PostAuthPasswordResetData, PostAuthPasswordResetErrors, PostAuthPasswordResetResponses, PostAuthPhoneVerifyData, PostAuthPhoneVerifyErrors, PostAuthPhoneVerifyResendData, PostAuthPhoneVerifyResendErrors, PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResponses, PostAuthProviderSignupData, PostAuthProviderSignupErrors, PostAuthProviderSignupResponses, PostAuthProviderTokenData, PostAuthProviderTokenErrors, PostAuthProviderTokenResponses, PostAuthReauthenticateData, PostAuthReauthenticateErrors, PostAuthReauthenticateResponses, PostAuthSignupData, PostAuthSignupErrors, PostAuthSignupResponses, PostTokensRefreshData, PostTokensRefreshErrors, PostTokensRefreshResponses, PutAccountEmailData, PutAccountEmailErrors, PutAccountEmailResponses } from './types.gen.js';
+import type { DeleteAccountAuthenticatorsTotpData, DeleteAccountAuthenticatorsTotpErrors, DeleteAccountAuthenticatorsTotpResponses, DeleteAccountEmailData, DeleteAccountEmailErrors, DeleteAccountEmailResponses, DeleteAccountProvidersData, DeleteAccountProvidersErrors, DeleteAccountProvidersResponses, DeleteAuthSessionData, DeleteAuthSessionErrors, DigitalIdOfflineCredentialCreateData, DigitalIdOfflineCredentialCreateResponses, DigitalIdOfflineCredentialDestroyData, DigitalIdOfflineCredentialDestroyResponses, DigitalIdOfflineCredentialRetrieveData, DigitalIdOfflineCredentialRetrieveErrors, DigitalIdOfflineCredentialRetrieveResponses, DigitalIdWalletAppleCreateData, DigitalIdWalletAppleCreateErrors, DigitalIdWalletGoogleCreateData, DigitalIdWalletGoogleCreateErrors, GetAccountAuthenticatorsData, GetAccountAuthenticatorsErrors, GetAccountAuthenticatorsRecoveryCodesData, GetAccountAuthenticatorsRecoveryCodesErrors, GetAccountAuthenticatorsRecoveryCodesResponses, GetAccountAuthenticatorsResponses, GetAccountAuthenticatorsTotpData, GetAccountAuthenticatorsTotpErrors, GetAccountAuthenticatorsTotpResponses, GetAccountEmailData, GetAccountEmailErrors, GetAccountEmailResponses, GetAccountPhoneData, GetAccountPhoneErrors, GetAccountPhoneResponses, GetAccountProvidersData, GetAccountProvidersResponses, GetAuthEmailVerifyData, GetAuthEmailVerifyErrors, GetAuthEmailVerifyResponses, GetAuthPasswordResetData, GetAuthPasswordResetErrors, GetAuthPasswordResetResponses, GetAuthProviderSignupData, GetAuthProviderSignupErrors, GetAuthProviderSignupResponses, GetAuthSessionData, GetAuthSessionErrors, GetAuthSessionResponses, GetConfigData, GetConfigResponses, PatchAccountEmailData, PatchAccountEmailErrors, PatchAccountEmailResponses, PostAccountAuthenticatorsRecoveryCodesData, PostAccountAuthenticatorsRecoveryCodesErrors, PostAccountAuthenticatorsTotpData, PostAccountAuthenticatorsTotpErrors, PostAccountAuthenticatorsTotpResponses, PostAccountEmailData, PostAccountEmailErrors, PostAccountEmailResponses, PostAccountPasswordChangeData, PostAccountPasswordChangeErrors, PostAccountPhoneData, PostAccountPhoneErrors, PostAccountPhoneResponses, PostAuth2FaAuthenticateData, PostAuth2FaAuthenticateErrors, PostAuth2FaAuthenticateResponses, PostAuth2FaReauthenticateData, PostAuth2FaReauthenticateErrors, PostAuth2FaReauthenticateResponses, PostAuthCodeConfirmData, PostAuthCodeConfirmErrors, PostAuthCodeConfirmResponses, PostAuthEmailVerifyData, PostAuthEmailVerifyErrors, PostAuthEmailVerifyResendData, PostAuthEmailVerifyResendErrors, PostAuthEmailVerifyResendResponses, PostAuthEmailVerifyResponses, PostAuthLoginData, PostAuthLoginErrors, PostAuthLoginResponses, PostAuthPasswordRequestData, PostAuthPasswordRequestErrors, PostAuthPasswordRequestResponses, PostAuthPasswordResetData, PostAuthPasswordResetErrors, PostAuthPasswordResetResponses, PostAuthPhoneVerifyData, PostAuthPhoneVerifyErrors, PostAuthPhoneVerifyResendData, PostAuthPhoneVerifyResendErrors, PostAuthPhoneVerifyResendResponses, PostAuthPhoneVerifyResponses, PostAuthProviderSignupData, PostAuthProviderSignupErrors, PostAuthProviderSignupResponses, PostAuthProviderTokenData, PostAuthProviderTokenErrors, PostAuthProviderTokenResponses, PostAuthReauthenticateData, PostAuthReauthenticateErrors, PostAuthReauthenticateResponses, PostAuthSignupData, PostAuthSignupErrors, PostAuthSignupResponses, PostTokensRefreshData, PostTokensRefreshErrors, PostTokensRefreshResponses, PutAccountEmailData, PutAccountEmailErrors, PutAccountEmailResponses, ReadersDecisionsCreateData, ReadersDecisionsCreateResponses, ReadersKeysRetrieveData, ReadersKeysRetrieveResponses, ReadersSyncRetrieveData, ReadersSyncRetrieveResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -537,6 +537,62 @@ export const postAuthSignup = <ThrowOnError extends boolean = false>(options: Op
  *
  */
 export const getConfig = <ThrowOnError extends boolean = false>(options?: Options<GetConfigData, ThrowOnError>): RequestResult<GetConfigResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetConfigResponses, unknown, ThrowOnError>({ url: '/v1/config', ...options });
+
+export const digitalIdOfflineCredentialDestroy = <ThrowOnError extends boolean = false>(options?: Options<DigitalIdOfflineCredentialDestroyData, ThrowOnError>): RequestResult<DigitalIdOfflineCredentialDestroyResponses, unknown, ThrowOnError> => (options?.client ?? client).delete<DigitalIdOfflineCredentialDestroyResponses, unknown, ThrowOnError>({
+    security: [{ name: 'X-Session-Token', type: 'apiKey' }],
+    url: '/v1/digital-id/offline-credential',
+    ...options
+});
+
+export const digitalIdOfflineCredentialRetrieve = <ThrowOnError extends boolean = false>(options?: Options<DigitalIdOfflineCredentialRetrieveData, ThrowOnError>): RequestResult<DigitalIdOfflineCredentialRetrieveResponses, DigitalIdOfflineCredentialRetrieveErrors, ThrowOnError> => (options?.client ?? client).get<DigitalIdOfflineCredentialRetrieveResponses, DigitalIdOfflineCredentialRetrieveErrors, ThrowOnError>({
+    security: [{ name: 'X-Session-Token', type: 'apiKey' }],
+    url: '/v1/digital-id/offline-credential',
+    ...options
+});
+
+export const digitalIdOfflineCredentialCreate = <ThrowOnError extends boolean = false>(options: Options<DigitalIdOfflineCredentialCreateData, ThrowOnError>): RequestResult<DigitalIdOfflineCredentialCreateResponses, unknown, ThrowOnError> => (options.client ?? client).post<DigitalIdOfflineCredentialCreateResponses, unknown, ThrowOnError>({
+    security: [{ name: 'X-Session-Token', type: 'apiKey' }],
+    url: '/v1/digital-id/offline-credential',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const digitalIdWalletAppleCreate = <ThrowOnError extends boolean = false>(options?: Options<DigitalIdWalletAppleCreateData, ThrowOnError>): RequestResult<unknown, DigitalIdWalletAppleCreateErrors, ThrowOnError> => (options?.client ?? client).post<unknown, DigitalIdWalletAppleCreateErrors, ThrowOnError>({
+    security: [{ name: 'X-Session-Token', type: 'apiKey' }],
+    url: '/v1/digital-id/wallet/apple',
+    ...options
+});
+
+export const digitalIdWalletGoogleCreate = <ThrowOnError extends boolean = false>(options?: Options<DigitalIdWalletGoogleCreateData, ThrowOnError>): RequestResult<unknown, DigitalIdWalletGoogleCreateErrors, ThrowOnError> => (options?.client ?? client).post<unknown, DigitalIdWalletGoogleCreateErrors, ThrowOnError>({
+    security: [{ name: 'X-Session-Token', type: 'apiKey' }],
+    url: '/v1/digital-id/wallet/google',
+    ...options
+});
+
+export const readersKeysRetrieve = <ThrowOnError extends boolean = false>(options?: Options<ReadersKeysRetrieveData, ThrowOnError>): RequestResult<ReadersKeysRetrieveResponses, unknown, ThrowOnError> => (options?.client ?? client).get<ReadersKeysRetrieveResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/readers/keys',
+    ...options
+});
+
+export const readersDecisionsCreate = <ThrowOnError extends boolean = false>(options: Options<ReadersDecisionsCreateData, ThrowOnError>): RequestResult<ReadersDecisionsCreateResponses, unknown, ThrowOnError> => (options.client ?? client).post<ReadersDecisionsCreateResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/readers/{reader_id}/decisions',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+export const readersSyncRetrieve = <ThrowOnError extends boolean = false>(options: Options<ReadersSyncRetrieveData, ThrowOnError>): RequestResult<ReadersSyncRetrieveResponses, unknown, ThrowOnError> => (options.client ?? client).get<ReadersSyncRetrieveResponses, unknown, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/readers/{reader_id}/sync',
+    ...options
+});
 
 /**
  * Refresh the access token

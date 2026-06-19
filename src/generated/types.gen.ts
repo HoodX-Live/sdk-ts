@@ -621,6 +621,134 @@ export type AllauthWebAuthnCredentialRequestOptions = {
 };
 
 /**
+ * * `resident` - resident
+ * * `invitation` - invitation
+ */
+export type AuthorizationTypeEnum = 'resident' | 'invitation';
+
+/**
+ * * `granted` - granted
+ * * `denied` - denied
+ * * `unknown` - unknown
+ */
+export type DecisionEnum = 'granted' | 'denied' | 'unknown';
+
+export type OfflineCredentialBundle = {
+    credential_id: string;
+    credential_version: number;
+    device_id: string;
+    display_name: string;
+    expires_at: string;
+    issued_at: string;
+    issuer: string;
+    signed_identity_claim: string;
+    signing_key_id: string;
+    supported_presentation_methods: Array<string>;
+};
+
+export type OfflineCredentialProvision = {
+    attestation?: unknown;
+    device_public_key_jwk: unknown;
+};
+
+/**
+ * * `app_qr` - app_qr
+ * * `wallet_qr` - wallet_qr
+ * * `wallet_nfc` - wallet_nfc
+ */
+export type PresentationMethodEnum = 'app_qr' | 'wallet_qr' | 'wallet_nfc';
+
+export type ReaderAuthorization = {
+    authorization_type: AuthorizationTypeEnum;
+    credential_id: string;
+    display_name: string;
+    valid_from: string;
+    valid_until: string;
+};
+
+export type ReaderCredential = {
+    credential_id: string;
+    device_bindings: Array<ReaderDeviceBinding>;
+    expires_at: string;
+    status: string;
+    version: number;
+};
+
+export type ReaderDecision = {
+    correlation_id?: string;
+    credential_digest?: string;
+    credential_id?: string | null;
+    decision: DecisionEnum;
+    local_decided_at: string;
+    offline?: boolean;
+    presentation_method: PresentationMethodEnum;
+    reason: ReasonEnum;
+    snapshot_version: string;
+};
+
+export type ReaderDecisionReceipt = {
+    accepted: number;
+    received_at: string;
+};
+
+export type ReaderDecisionUpload = {
+    decisions: Array<ReaderDecision>;
+};
+
+export type ReaderDeviceBinding = {
+    device_id: string;
+    public_key_jwk: unknown;
+    status: string;
+};
+
+export type ReaderKeys = {
+    keys: Array<ReaderSigningKey>;
+};
+
+export type ReaderRevocation = {
+    credential_id: string;
+    revoked_at: string | null;
+};
+
+export type ReaderSigningKey = {
+    key_id: string;
+    not_after: string;
+    not_before: string;
+    public_key_jwk: unknown;
+};
+
+export type ReaderSnapshot = {
+    authorizations: Array<ReaderAuthorization>;
+    credentials: Array<ReaderCredential>;
+    generated_at: string;
+    max_offline_age_seconds: number;
+    neighborhood_id: number;
+    reader_id: string;
+    revocations: Array<ReaderRevocation>;
+    signing_keys: Array<ReaderSigningKey>;
+    snapshot_version: string;
+};
+
+/**
+ * * `resident` - resident
+ * * `invitation` - invitation
+ * * `no_access` - no_access
+ * * `expired` - expired
+ * * `revoked` - revoked
+ * * `replayed` - replayed
+ * * `malformed` - malformed
+ * * `stale_snapshot` - stale_snapshot
+ * * `reader_disabled` - reader_disabled
+ * * `local_failure` - local_failure
+ */
+export type ReasonEnum = 'resident' | 'invitation' | 'no_access' | 'expired' | 'revoked' | 'replayed' | 'malformed' | 'stale_snapshot' | 'reader_disabled' | 'local_failure';
+
+export type WalletUnsupportedResponse = {
+    message: string;
+    status: string;
+};
+
+/**
  * The email verification key
  */
 export type AllauthEmailVerificationKey = string;
@@ -2121,6 +2249,124 @@ export type GetConfigResponses = {
 };
 
 export type GetConfigResponse = GetConfigResponses[keyof GetConfigResponses];
+
+export type DigitalIdOfflineCredentialDestroyData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/digital-id/offline-credential';
+};
+
+export type DigitalIdOfflineCredentialDestroyResponses = {
+    /**
+     * No response body
+     */
+    204: void;
+};
+
+export type DigitalIdOfflineCredentialDestroyResponse = DigitalIdOfflineCredentialDestroyResponses[keyof DigitalIdOfflineCredentialDestroyResponses];
+
+export type DigitalIdOfflineCredentialRetrieveData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/digital-id/offline-credential';
+};
+
+export type DigitalIdOfflineCredentialRetrieveErrors = {
+    /**
+     * No response body
+     */
+    404: unknown;
+};
+
+export type DigitalIdOfflineCredentialRetrieveResponses = {
+    200: OfflineCredentialBundle;
+};
+
+export type DigitalIdOfflineCredentialRetrieveResponse = DigitalIdOfflineCredentialRetrieveResponses[keyof DigitalIdOfflineCredentialRetrieveResponses];
+
+export type DigitalIdOfflineCredentialCreateData = {
+    body: OfflineCredentialProvision;
+    path?: never;
+    query?: never;
+    url: '/v1/digital-id/offline-credential';
+};
+
+export type DigitalIdOfflineCredentialCreateResponses = {
+    201: OfflineCredentialBundle;
+};
+
+export type DigitalIdOfflineCredentialCreateResponse = DigitalIdOfflineCredentialCreateResponses[keyof DigitalIdOfflineCredentialCreateResponses];
+
+export type DigitalIdWalletAppleCreateData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/digital-id/wallet/apple';
+};
+
+export type DigitalIdWalletAppleCreateErrors = {
+    501: WalletUnsupportedResponse;
+};
+
+export type DigitalIdWalletAppleCreateError = DigitalIdWalletAppleCreateErrors[keyof DigitalIdWalletAppleCreateErrors];
+
+export type DigitalIdWalletGoogleCreateData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/digital-id/wallet/google';
+};
+
+export type DigitalIdWalletGoogleCreateErrors = {
+    501: WalletUnsupportedResponse;
+};
+
+export type DigitalIdWalletGoogleCreateError = DigitalIdWalletGoogleCreateErrors[keyof DigitalIdWalletGoogleCreateErrors];
+
+export type ReadersKeysRetrieveData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/readers/keys';
+};
+
+export type ReadersKeysRetrieveResponses = {
+    200: ReaderKeys;
+};
+
+export type ReadersKeysRetrieveResponse = ReadersKeysRetrieveResponses[keyof ReadersKeysRetrieveResponses];
+
+export type ReadersDecisionsCreateData = {
+    body: ReaderDecisionUpload;
+    path: {
+        reader_id: string;
+    };
+    query?: never;
+    url: '/v1/readers/{reader_id}/decisions';
+};
+
+export type ReadersDecisionsCreateResponses = {
+    202: ReaderDecisionReceipt;
+};
+
+export type ReadersDecisionsCreateResponse = ReadersDecisionsCreateResponses[keyof ReadersDecisionsCreateResponses];
+
+export type ReadersSyncRetrieveData = {
+    body?: never;
+    path: {
+        reader_id: string;
+    };
+    query?: never;
+    url: '/v1/readers/{reader_id}/sync';
+};
+
+export type ReadersSyncRetrieveResponses = {
+    200: ReaderSnapshot;
+};
+
+export type ReadersSyncRetrieveResponse = ReadersSyncRetrieveResponses[keyof ReadersSyncRetrieveResponses];
 
 export type PostTokensRefreshData = {
     body?: AllauthRefreshToken2;
