@@ -626,6 +626,14 @@ export type AllauthWebAuthnCredentialRequestOptions = {
  */
 export type AuthorizationTypeEnum = 'resident' | 'invitation';
 
+export type CompactAppQrContract = {
+    format: string;
+    max_ttl_seconds: number;
+    method: string;
+    signature_alg: string;
+    version: number;
+};
+
 /**
  * * `granted` - granted
  * * `denied` - denied
@@ -634,6 +642,9 @@ export type AuthorizationTypeEnum = 'resident' | 'invitation';
 export type DecisionEnum = 'granted' | 'denied' | 'unknown';
 
 export type OfflineCredentialBundle = {
+    app_qr: CompactAppQrContract;
+    compact_credential_id: string;
+    compact_device_id: string;
     credential_id: string;
     credential_version: number;
     device_id: string;
@@ -667,6 +678,7 @@ export type ReaderAuthorization = {
 };
 
 export type ReaderCredential = {
+    compact_credential_id: string;
     credential_id: string;
     device_bindings: Array<ReaderDeviceBinding>;
     expires_at: string;
@@ -696,6 +708,7 @@ export type ReaderDecisionUpload = {
 };
 
 export type ReaderDeviceBinding = {
+    compact_device_id: string;
     device_id: string;
     public_key_jwk: unknown;
     status: string;
