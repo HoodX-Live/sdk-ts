@@ -34,6 +34,16 @@ pnpm check
 `pnpm check` is the main gate. It regenerates the SDK, builds it, runs tests,
 and fails if generation produces an uncommitted diff.
 
+You can also use the unified `just` targets:
+
+```console
+just install
+just build
+just test
+just check
+just clean
+```
+
 ## Editing guidance
 
 - Hand edits usually belong in:
