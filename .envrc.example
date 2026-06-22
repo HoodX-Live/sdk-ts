@@ -1,0 +1,6 @@
+# HoodX TypeScript SDK local development environment.
+# Copy this file to `.envrc` and update values as needed.
+
+# This package does not currently require any environment variables at build
+# or test time. The SDK consumer (e.g., the mobile app) passes the API base
+# URL directly when creating the client.
