@@ -1,4 +1,5 @@
 import { createClient } from './generated/client';
+import { client as defaultClient } from './generated/client.gen.js';
 import type { Client } from './generated/client';
 
 const SESSION_HEADER = 'X-Session-Token';
@@ -13,6 +14,10 @@ export interface SessionTokenStore {
 export interface HoodxClientOptions {
   baseUrl: string;
   sessionTokenStore: SessionTokenStore;
+}
+
+export function getClient(): Client {
+  return defaultClient;
 }
 
 export function createHoodxClient({

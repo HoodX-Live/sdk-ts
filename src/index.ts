@@ -9,6 +9,7 @@ export {
   readersKeysRetrieve as listReaderVerificationKeys,
   readersSyncRetrieve as syncReaderAuthorizationSnapshot,
 } from './generated';
-export { createHoodxClient } from './client';
+export { createHoodxClient, getClient } from './client';
 export type { HoodxClientOptions, SessionTokenStore } from './client';
 export type { Client } from './generated/client';
+export * from './nfc-badge.js';

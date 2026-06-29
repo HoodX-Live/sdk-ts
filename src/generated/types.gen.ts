@@ -626,6 +626,19 @@ export type AllauthWebAuthnCredentialRequestOptions = {
  */
 export type AuthorizationTypeEnum = 'resident' | 'invitation';
 
+export type CompactAppQrContract = {
+    format: string;
+    max_ttl_seconds: number;
+    method: string;
+    signature_alg: string;
+    version: number;
+};
+
+export type CreateCredential = {
+    expires_in_seconds: number;
+    user_id?: string;
+};
+
 /**
  * * `granted` - granted
  * * `denied` - denied
@@ -633,7 +646,18 @@ export type AuthorizationTypeEnum = 'resident' | 'invitation';
  */
 export type DecisionEnum = 'granted' | 'denied' | 'unknown';
 
+export type GoogleWalletJwtResponse = {
+    jwt: string;
+};
+
+export type GoogleWalletPass = {
+    credential: SignedCredential;
+};
+
 export type OfflineCredentialBundle = {
+    app_qr: CompactAppQrContract;
+    compact_credential_id: string;
+    compact_device_id: string;
     credential_id: string;
     credential_version: number;
     device_id: string;
@@ -667,6 +691,7 @@ export type ReaderAuthorization = {
 };
 
 export type ReaderCredential = {
+    compact_credential_id: string;
     credential_id: string;
     device_bindings: Array<ReaderDeviceBinding>;
     expires_at: string;
@@ -696,6 +721,7 @@ export type ReaderDecisionUpload = {
 };
 
 export type ReaderDeviceBinding = {
+    compact_device_id: string;
     device_id: string;
     public_key_jwk: unknown;
     status: string;
@@ -742,6 +768,27 @@ export type ReaderSnapshot = {
  * * `local_failure` - local_failure
  */
 export type ReasonEnum = 'resident' | 'invitation' | 'no_access' | 'expired' | 'revoked' | 'replayed' | 'malformed' | 'stale_snapshot' | 'reader_disabled' | 'local_failure';
+
+export type RevocationListResponse = {
+    revoked: Array<string>;
+    updated_at: string;
+};
+
+export type SignedCredential = {
+    c: string;
+    e: number;
+    s: string;
+};
+
+export type SignedCredentialResponse = {
+    c: string;
+    e: number;
+    s: string;
+};
+
+export type UpdateGoogleWalletPass = {
+    credential: SignedCredential;
+};
 
 export type WalletUnsupportedResponse = {
     message: string;
@@ -2324,6 +2371,62 @@ export type DigitalIdWalletGoogleCreateErrors = {
 };
 
 export type DigitalIdWalletGoogleCreateError = DigitalIdWalletGoogleCreateErrors[keyof DigitalIdWalletGoogleCreateErrors];
+
+export type NfcBadgeCredentialsCreateData = {
+    body: CreateCredential;
+    path?: never;
+    query?: never;
+    url: '/v1/nfc-badge/credentials';
+};
+
+export type NfcBadgeCredentialsCreateResponses = {
+    201: SignedCredentialResponse;
+};
+
+export type NfcBadgeCredentialsCreateResponse = NfcBadgeCredentialsCreateResponses[keyof NfcBadgeCredentialsCreateResponses];
+
+export type NfcBadgeRevocationsRetrieveData = {
+    body?: never;
+    path?: never;
+    query: {
+        since: string;
+    };
+    url: '/v1/nfc-badge/revocations';
+};
+
+export type NfcBadgeRevocationsRetrieveResponses = {
+    200: RevocationListResponse;
+};
+
+export type NfcBadgeRevocationsRetrieveResponse = NfcBadgeRevocationsRetrieveResponses[keyof NfcBadgeRevocationsRetrieveResponses];
+
+export type NfcBadgeWalletGoogleCreateData = {
+    body: GoogleWalletPass;
+    path?: never;
+    query?: never;
+    url: '/v1/nfc-badge/wallet/google';
+};
+
+export type NfcBadgeWalletGoogleCreateResponses = {
+    200: GoogleWalletJwtResponse;
+};
+
+export type NfcBadgeWalletGoogleCreateResponse = NfcBadgeWalletGoogleCreateResponses[keyof NfcBadgeWalletGoogleCreateResponses];
+
+export type NfcBadgeWalletGoogleUpdateData = {
+    body: UpdateGoogleWalletPass;
+    path: {
+        credential_id: string;
+    };
+    query?: never;
+    url: '/v1/nfc-badge/wallet/google/{credential_id}';
+};
+
+export type NfcBadgeWalletGoogleUpdateResponses = {
+    200: GoogleWalletJwtResponse;
+};
+
+export type NfcBadgeWalletGoogleUpdateResponse = NfcBadgeWalletGoogleUpdateResponses[keyof NfcBadgeWalletGoogleUpdateResponses];
 
 export type ReadersKeysRetrieveData = {
     body?: never;
