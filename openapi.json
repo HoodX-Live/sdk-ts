@@ -3128,6 +3128,21 @@
         ],
         "type": "object"
       },
+      "CreateCredential": {
+        "properties": {
+          "expires_in_seconds": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "expires_in_seconds"
+        ],
+        "type": "object"
+      },
       "DecisionEnum": {
         "description": "* `granted` - granted\n* `denied` - denied\n* `unknown` - unknown",
         "enum": [
@@ -3136,6 +3151,28 @@
           "unknown"
         ],
         "type": "string"
+      },
+      "GoogleWalletJwtResponse": {
+        "properties": {
+          "jwt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jwt"
+        ],
+        "type": "object"
+      },
+      "GoogleWalletPass": {
+        "properties": {
+          "credential": {
+            "$ref": "#/components/schemas/SignedCredential"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "type": "object"
       },
       "OfflineCredentialBundle": {
         "properties": {
@@ -3512,6 +3549,77 @@
           "local_failure"
         ],
         "type": "string"
+      },
+      "RevocationListResponse": {
+        "properties": {
+          "revoked": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "revoked",
+          "updated_at"
+        ],
+        "type": "object"
+      },
+      "SignedCredential": {
+        "properties": {
+          "c": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "e": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "s": {
+            "pattern": "^[A-Za-z0-9_-]{86}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "c",
+          "e",
+          "s"
+        ],
+        "type": "object"
+      },
+      "SignedCredentialResponse": {
+        "properties": {
+          "c": {
+            "type": "string"
+          },
+          "e": {
+            "type": "integer"
+          },
+          "s": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "c",
+          "e",
+          "s"
+        ],
+        "type": "object"
+      },
+      "UpdateGoogleWalletPass": {
+        "properties": {
+          "credential": {
+            "$ref": "#/components/schemas/SignedCredential"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "type": "object"
       },
       "WalletUnsupportedResponse": {
         "properties": {
@@ -5061,6 +5169,187 @@
         ],
         "tags": [
           "digital-id"
+        ]
+      }
+    },
+    "/v1/nfc-badge/credentials": {
+      "post": {
+        "operationId": "nfc_badge_credentials_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCredential"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCredential"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCredential"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignedCredentialResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "nfc-badge"
+        ]
+      }
+    },
+    "/v1/nfc-badge/revocations": {
+      "get": {
+        "operationId": "nfc_badge_revocations_retrieve",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "since",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevocationListResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "nfc-badge"
+        ]
+      }
+    },
+    "/v1/nfc-badge/wallet/google": {
+      "post": {
+        "operationId": "nfc_badge_wallet_google_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleWalletPass"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleWalletPass"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleWalletPass"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleWalletJwtResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "nfc-badge"
+        ]
+      }
+    },
+    "/v1/nfc-badge/wallet/google/{credential_id}": {
+      "put": {
+        "operationId": "nfc_badge_wallet_google_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "credential_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGoogleWalletPass"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGoogleWalletPass"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGoogleWalletPass"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleWalletJwtResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "xSessionToken": []
+          }
+        ],
+        "tags": [
+          "nfc-badge"
         ]
       }
     },
