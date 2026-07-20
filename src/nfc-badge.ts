@@ -1,11 +1,6 @@
 import { getClient } from './client.js';
 import type { Client } from './generated/client/index.js';
-
-export type SignedCredential = {
-  c: string;
-  e: number;
-  s: string;
-};
+import type { SignedCredential } from './generated/types.gen.js';
 
 export type CreateBackendSignedCredentialInput = {
   userId?: string;
